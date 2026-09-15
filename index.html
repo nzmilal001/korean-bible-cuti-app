@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연합 성경 묵상 - 큐티 앱</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1>📖 연합 성경 묵상</h1>
+            <p class="subtitle">오늘의 말씀과 묵상</p>
+        </header>
+
+        <!-- 날짜 선택 -->
+        <div class="date-selector">
+            <input type="date" id="selectedDate" class="date-input">
+        </div>
+
+        <!-- 성경 선택 섹션 -->
+        <section class="bible-selector-section">
+            <h2>📕 성경 선택</h2>
+            <div class="button-group">
+                <button class="btn btn-primary" id="mainBibleBtn">
+                    주 성경 (개역개정)
+                    <span class="dropdown-icon">▼</span>
+                </button>
+                <button class="btn btn-secondary" id="compareBibleBtn">
+                    대조 성경
+                    <span class="dropdown-icon">▼</span>
+                </button>
+            </div>
+
+            <!-- 주 성경 드롭다운 -->
+            <div class="dropdown-menu" id="mainBibleDropdown" style="display: none;">
+                <div class="dropdown-title">한글 성경 선택</div>
+                <button class="dropdown-item" data-version="kjv">개역개정 (기본)</button>
+                <button class="dropdown-item" data-version="niv">개역</button>
+                <button class="dropdown-item" data-version="nkjv">새번역</button>
+                <button class="dropdown-item" data-version="nasb">현대인의 성경</button>
+                <button class="dropdown-item" data-version="esv">우리말성경</button>
+            </div>
+
+            <!-- 대조 성경 드롭다운 -->
+            <div class="dropdown-menu" id="compareBibleDropdown" style="display: none;">
+                <div class="dropdown-title">영문 성경 선택</div>
+                <button class="dropdown-item" data-version="kjv">King James Bible (KJV)</button>
+                <button class="dropdown-item" data-version="niv">New International Version (NIV)</button>
+                <button class="dropdown-item" data-version="rsv">Revised Standard Version (RSV)</button>
+                <button class="dropdown-item" data-version="nrsv">New Revised Standard Version (NRSV)</button>
+                <button class="dropdown-item" data-version="greek">그리스어 원문</button>
+                <button class="dropdown-item" data-version="hebrew">히브리어 원문</button>
+            </div>
+        </section>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <div class="content-wrapper">
+            <!-- 좌측: 주 성경 본문 -->
+            <section class="bible-content main-bible">
+                <div class="bible-header">
+                    <h3 id="mainBibleTitle">주 성경</h3>
+                    <span class="version-tag" id="mainVersionTag">개역개정</span>
+                </div>
+                <div class="bible-text" id="mainBibleText">
+                    <p class="placeholder">성경 본문이 여기에 표시됩니다.</p>
+                </div>
+                <div class="bible-summary">
+                    <h4>📝 본문 요약 (브루스만의 시각)</h4>
+                    <div class="summary-content" id="mainSummary">
+                        <p class="placeholder">요약이 여기에 표시됩니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 우측: 대조 성경 본문 -->
+            <section class="bible-content compare-bible">
+                <div class="bible-header">
+                    <h3 id="compareBibleTitle">대조 성경</h3>
+                    <span class="version-tag" id="compareVersionTag">KJV</span>
+                </div>
+                <div class="bible-text" id="compareBibleText">
+                    <p class="placeholder">대조 성경 본문이 여기에 표시됩니다.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 큐티 작성 섹션 -->
+        <section class="cuti-section">
+            <h2>✍️ 나의 묵상 및 적용</h2>
+
+            <!-- 1. 본문과 요약 -->
+            <div class="cuti-item">
+                <h3>1️⃣ 나의 본문 요약</h3>
+                <textarea id="myTextSummary" class="textarea-input" placeholder="오늘 말씀의 본문을 요약해주세요..."></textarea>
+            </div>
+
+            <!-- 2. 나의 해석 -->
+            <div class="cuti-item">
+                <h3>2️⃣ 나의 해석</h3>
+                <textarea id="myInterpretation" class="textarea-input" placeholder="본문의 의미를 내 언어로 해석해주세요..."></textarea>
+            </div>
+
+            <!-- 3. 묵상 및 적용 -->
+            <div class="cuti-item">
+                <h3>3️⃣ 묵상 및 적용</h3>
+                <div class="application-focus">
+                    <p><strong>📌 적용 초점:</strong></p>
+                    <ul>
+                        <li>장애인의 권리 입장에서의 묵상</li>
+                        <li>예수의 사랑 관점</li>
+                        <li>부활의 의미</li>
+                        <li>천국의 소망</li>
+                    </ul>
+                </div>
+                <textarea id="myApplication" class="textarea-input" placeholder="위 관점들을 토대로 오늘 말씀을 어떻게 적용할 것인지 묵상해주세요..."></textarea>
+            </div>
+
+            <!-- 4. 나의 적용 -->
+            <div class="cuti-item">
+                <h3>4️⃣ 오늘의 결단 및 기도제목</h3>
+                <textarea id="myDecision" class="textarea-input" placeholder="오늘 하나님 말씀에 대한 나의 결단과 기도제목을 작성해주세요..."></textarea>
+            </div>
+
+            <!-- 5. 복사 버튼 -->
+            <div class="button-group">
+                <button class="btn btn-copy" id="copyBtn">
+                    📋 복사하기
+                </button>
+            </div>
+
+            <!-- 6. 공유 버튼 -->
+            <div class="button-group share-buttons">
+                <button class="btn btn-share" id="kakaoBtn">
+                    💬 카카오톡 보내기
+                </button>
+                <button class="btn btn-share" id="emailBtn">
+                    ✉️ 메일 보내기
+                </button>
+                <button class="btn btn-share" id="driveBtn">
+                    ☁️ Google Drive 저장
+                </button>
+            </div>
+        </section>
+
+        <!-- 저장 상태 -->
+        <div class="save-status" id="saveStatus"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
